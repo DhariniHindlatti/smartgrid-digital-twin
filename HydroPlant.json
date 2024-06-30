@@ -1,7 +1,105 @@
+
 {
-    "@id": "dtmi:example:grid:plants:hydroPlant;1",
-    "@context": "dtmi:dtdl:context;3",
-    "@type": "Interface",
-    "extends": ["dtmi:example:grid:plants:basePlant;1"],
-    "displayName": "Hydro Plant"
+  "@id": "dtmi:example:grid:plants:hydroPlant;1",
+  "@context": "dtmi:dtdl:context;3",
+  "@type": "Interface",
+  "displayName": "Hydro Power Plant",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "Output",
+      "schema": "double"
+    },
+    {
+      "@type": "Relationship",
+      "name": "feeds",
+      "target": "dtmi:example:grid:transmission:powerLine;1"
+    },
+    {
+      "@type": "Property",
+      "name": "EmissionType",
+      "comment": "[GLOBALTYPE]",
+      "schema": {
+        "@type": "Enum",
+        "valueSchema": "string",
+        "enumValues": [
+          {
+            "name": "Renewable",
+            "displayName": "Renewable",
+            "enumValue": "Renewable"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "WaterIntakeRate",
+      "schema": "double",
+      "comment": "Rate of water flow into the plant (e.g., cubic meters per second)"
+    },
+    {
+      "@type": "Property",
+      "name": "ReservoirLevel",
+      "schema": "double",
+      "comment": "Water level in the reservoir (e.g., meters)"
+    },
+    {
+      "@type": "Property",
+      "name": "TurbineStatus",
+      "comment": "Current operational status of the turbine",
+      "schema": {
+        "@type": "Enum",
+        "valueSchema": "string",
+        "enumValues": [
+          {
+            "name": "Operational",
+            "displayName": "Operational",
+            "enumValue": "Operational"
+          },
+          {
+            "name": "Faulty",
+            "displayName": "Faulty",
+            "enumValue": "Faulty"
+          },
+          {
+            "name": "Offline",
+            "displayName": "Offline",
+            "enumValue": "Offline"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "GeneratorStatus",
+      "comment": "Current operational status of the generator",
+      "schema": {
+        "@type": "Enum",
+        "valueSchema": "string",
+        "enumValues": [
+          {
+            "name": "Operational",
+            "displayName": "Operational",
+            "enumValue": "Operational"
+          },
+          {
+            "name": "Faulty",
+            "displayName": "Faulty",
+            "enumValue": "Faulty"
+          },
+          {
+            "name": "Offline",
+            "displayName": "Offline",
+            "enumValue": "Offline"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Property",
+      "name": "LastFaultCode",
+      "schema": "string",
+      "comment": "Identifier code for the most recent fault encountered (optional)"
+    }
+  ]
 }
